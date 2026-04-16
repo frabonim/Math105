@@ -24,8 +24,8 @@ while IFS= read -r -d '' tex_file; do
 
   (
     cd "$ROOT_DIR/$rel_dir"
-    pdflatex -interaction=nonstopmode -halt-on-error -output-directory "$temp_dir" "$src_name" >/dev/null
-    pdflatex -interaction=nonstopmode -halt-on-error -output-directory "$temp_dir" "$src_name" >/dev/null
+    pdflatex -interaction=nonstopmode -halt-on-error -output-directory "$temp_dir" "$src_name"
+    pdflatex -interaction=nonstopmode -halt-on-error -output-directory "$temp_dir" "$src_name"
   )
 
   mv "$temp_dir/$base_name.pdf" "$out_dir/$base_name.pdf"

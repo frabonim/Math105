@@ -1,5 +1,8 @@
 name: Build and Deploy
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 on:
   push:
     branches:
@@ -26,7 +29,7 @@ jobs:
       - name: Install Pandoc and TeX
         run: |
           sudo apt-get update
-          sudo apt-get install -y pandoc texlive-latex-recommended texlive-latex-extra texlive-pictures
+          sudo apt-get install -y pandoc texlive-latex-recommended texlive-latex-extra texlive-pictures texlive-fonts-extra
 
       - name: Build site
         run: |
