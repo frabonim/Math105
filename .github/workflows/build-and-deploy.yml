@@ -32,7 +32,8 @@ jobs:
         run: |
           if ! kpsewhich putb8a.pfb >/dev/null 2>&1; then
             apt-get update
-            apt-get install -y --no-install-recommends texlive-fonts-extra
+            apt-get install -y --no-install-recommends texlive-fonts-extra texlive-fonts-extra-links
+            mktexlsr
           fi
 
       - name: Build site

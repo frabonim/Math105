@@ -10,4 +10,5 @@ RUN apt-get update \
       texlive-latex-extra \
       texlive-pictures \
       texlive-fonts-extra \
+      texlive-fonts-extra-links \
     && rm -rf /var/lib/apt/lists/*
