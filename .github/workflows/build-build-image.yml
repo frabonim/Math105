@@ -1,8 +1,5 @@
 name: Build Build Image
 
-env:
-  BUILD_IMAGE: ghcr.io/${{ github.repository_owner }}/math105-build-env:latest
-
 on:
   push:
     branches:
@@ -40,4 +37,4 @@ jobs:
           context: .
           file: .github/docker/build-env.Dockerfile
           push: true
-          tags: ${{ env.BUILD_IMAGE }}
+          tags: ghcr.io/${{ github.repository_owner }}/math105-build-env:latest
