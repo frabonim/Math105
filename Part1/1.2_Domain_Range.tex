@@ -1,0 +1,200 @@
+\documentclass[12pt, twoside]{report}
+
+\usepackage{multicol}
+\usepackage{amsmath}
+
+%% comment this line for handouts. Uncomment for lecture notes
+%\newcommand{\lectureNoteMode}{}
+
+\input{../105Notes.tex}
+
+\setlength{\parindent}{0pt}
+
+\setcounter{chapter}{1}
+\begin{document}
+
+
+\mynonumsect[1.2]{Domain and Range}
+
+\textbf{Goal:} To determine the domain and range of functions and their graphs
+
+
+\defn{The \dt{Domain} of a function is the set of all possible input values.  \\
+	The \dt{Range} of a function is the set of all possible output values.}
+
+\myhead{Notation}
+
+\defn{
+\dt{Interval Notation:}
+	We can describe the domain and range of a function using intervals of values, referred to by the starting and ending values.  
+	\begin{itemize}
+		\item Curved parentheses are used for “strictly less than.” \\
+		 A parenthesis, ) or (, is used if the endpoint is not included.
+	
+		\item Square brackets are used for “less than or equal to.”  \\
+		A bracket, {]} or {[}, is used if the endpoint is included.
+		
+		\item Since infinity is not a number, we can’t include it in the interval, so we always use curved parentheses with $\infty$ and $\-infty$.
+		
+		\item 	We use the union symbol, $\cup$ , to combine two unconnected intervals together.  
+	\end{itemize}
+}
+
+
+\ex{ Fill in the missing spaces with the other notation.
+
+
+\begin{center}
+	\begin{tabular}{|c|c|p{3in}|}
+		\hline
+		\textbf{Inequality} & \textbf{Interval Notation} & \textbf{Line Graph} \\
+		\hline
+		& & \\
+		$x > 3$ &  & \\
+		& & \\
+		\hline
+		& & \\
+		$t \leq 7$ &  & \\
+		& & \\
+		\hline
+		& & \\
+		$-3 < x \leq 5$ &  & \\
+		& & \\
+		\hline
+		& & \\
+		& $[1, 15]$ & \\
+		& & \\
+		\hline
+		& & \\
+		& $(-\infty, 3)$ & \\
+		& & \\
+		\hline
+		& & \\
+		$1\leq x \leq 3$ or $x>5$ & & \\
+		& & \\
+		\hline
+	\end{tabular}
+\end{center}
+}
+
+
+\pagebreak 
+
+
+
+
+\myhead{Domain and Range from Graphs}
+
+We can also talk about domain and range based on graphs.  
+\begin{itemize}
+	\item Since domain refers to the set of possible input values, the domain of a graph consists of all the input values shown on the graph.  Remember that input values are almost always shown along the horizontal axis of the graph. 
+	\item  Likewise, since range is the set of possible output values, the range of a graph we can see from the possible values along the vertical axis of the graph.  
+	\item Be careful – if the graph continues beyond the window on which we can see the graph, the domain and range might be larger than the values we can see.
+\end{itemize}
+
+
+\ex{Determine the domain and range of each graph below.}
+	
+\includegraphics[alt={Graph of Alaska crude oil production over time, used to identify the domain and range from a real-world graph.}, width=3.5in]{105_1.2_figure1.jpg} \hfill
+\includegraphics[alt={Graph of world population over time, used to identify the domain and range from a real-world graph.}, width=3.5in]{105_1.2_figure2.jpg} \\
+\small{
+	\href{https://commons.wikimedia.org/wiki/File:Alaska_Crude_Oil_Production.PNG}{source: wikimedia}
+}
+
+\vskip0.25in 
+
+\begin{tabular}{|l|p{3in}|p{3in}|}
+	\hline
+	& Alaska Crude Oil & World Population \\
+	\hline 
+	&& \\
+	&& \\
+	Domain & & \\
+	&& \\
+	&& \\
+	\hline
+	&& \\
+	&& \\
+	Range & & \\ 
+	&& \\
+	&& \\
+	\hline 
+\end{tabular}
+
+
+
+
+\pagebreak
+
+
+\myhead{Domain and Range from Formulas}
+
+
+\note{\dt{Finding Domain Algebraically}
+	
+When determining the domain algebraically from formulas, we need to remember these two rules: \\
+\begin{itemize}
+  \item We cannot divide by 0
+  \item We cannot take the square root of a negative number
+\end{itemize}
+}
+
+
+\begin{enumerate}
+	\item Find the domain of the function \(f(x) = \dfrac{1}{x}\).
+ 	\vfill
+  
+	\item Find the domain of the function $f(x)=\dfrac{7}{2x+3}$. 
+	\vfill
+  
+	\item Find the domain of the function $f(x)=\sqrt{4x-5}$. 
+	\vfill 
+\end{enumerate}
+
+
+\pagebreak
+
+
+
+
+\myhead{Piecewise Functions}
+
+Some functions cannot be described by a single formula.  
+
+\defn{A \dt{Piecewise function} is a function in which the formula used depends upon the domain the input lies in.  We notate this idea like:
+
+\begin{center}
+	$
+	f(x) = 
+	\begin{cases}
+		\text{formula1} & \text{if domain to use formula1} \\
+		\text{formula2} & \text{if domain to use formula2} \\
+		\text{formula3} & \text{if domain to use formula3} 
+	\end{cases}
+	$
+\end{center}
+
+}
+
+
+
+\ex{A museum charges $\$5$ per person for a guided tour with a group of 1 to 9 people, or a fixed $\$50$ fee for 10 or more people in the group.  Set up a function relating the number of people, n, to the cost, C.
+}
+\vfill 
+
+
+\ex{A cell phone company uses the function below to determine the cost, $C$, in dollars for $g$ gigabytes of data transfer.  
+
+$C(g)=
+\begin{cases}
+	25 & \text{if \hskip0.25in} 0<g<2 \\
+	25+10(g-2) & \text{if \hskip0.25in} g \geq 2
+\end{cases}
+$
+
+Find the cost of using 1.5 gigabytes of data, and the cost of using 4 gigabytes of data.
+}	
+\vfill 
+
+
+\end{document}

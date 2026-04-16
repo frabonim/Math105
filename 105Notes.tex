@@ -1,0 +1,200 @@
+\raggedbottom
+
+\usepackage{color, xifthen, amsthm, amssymb, amsmath, tikz, pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{backgrounds}
+\usepackage[letterpaper, margin=1in]{geometry}
+\usepackage{multicol}
+\usepackage{fourier}  %don't use txfonts b/c the sf doesn't look good
+
+\usepackage{enumitem}
+\setlist{topsep=-\parskip/2}
+
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{\baselineskip}
+
+
+\usepackage{mdframed} % makes better frames around examples (eg pagebreak allowed)
+  % from mdframed package. used for examples
+\newmdenv[
+  skipabove=10pt,%\topsep,
+  skipbelow=10pt,%\topsep
+  ]{allrules}
+
+\usepackage{tcolorbox} % for colored boxes
+
+
+\usepackage{subfigure}
+\usepackage{hyperref}
+\hypersetup{colorlinks, urlcolor=red, linkcolor=.} %color urls, but not interal refs
+\usepackage{graphicx, floatflt}
+\graphicspath{{./figs/}{../figs/}}
+\DeclareGraphicsExtensions{.png,.jpg,.pdf}
+
+\usepackage{wrapfig}  %useful for wrapping text around pictures or tables
+		      %though it doesn't do a great job inside my example boxes
+
+
+\definecolor{defbod}{rgb}{.8,.8,.8}     \definecolor{defhead}{rgb}{.7,.1,.1}
+\definecolor{thmbod}{rgb}{.8,.8,.8}     \definecolor{thmhead}{rgb}{.1,.1,.9}
+\definecolor{factbod}{rgb}{1,1,1}    \definecolor{facthead}{rgb}{.1,.7,.1}
+\definecolor{exbod}{rgb}{1,1,1}         \definecolor{exhead}{rgb}{0,.3,0}
+\definecolor{soltext}{rgb}{.2,.2,.5}
+\definecolor{notebod}{rgb}{.9,.9,.9}    \definecolor{notehead}{rgb}{.1,.1,.7}
+
+\newcommand{\defn}[1]{
+ \noindent \colorbox{defbod}{\begin{minipage}{.95\linewidth}
+ \hspace{-12pt}\colorbox{defhead}{\sf\color{white} Definition}
+ #1
+ \end{minipage} } \medskip
+ }
+\newcommand{\dt}[1]{\textcolor{defhead}{\bfseries #1}}
+
+\newcommand{\thrm}[1]{
+ \noindent \colorbox{thmbod}{\begin{minipage}{.95\linewidth}
+ \hspace{-12pt}\colorbox{thmhead}{\sf\color{white}Theorem}
+ #1
+ \end{minipage} } \medskip
+ }
+\newcommand{\coro}[1]{
+ \noindent \colorbox{thmbod}{\begin{minipage}{.95\linewidth}
+ \hspace{-12pt}\colorbox{thmhead}{\sf\color{white}Corollary}
+ #1
+ \end{minipage} } \medskip
+ }
+\newcommand{\fact}[1]{  %%%% !! note this different from calcnotes
+ \noindent \begin{allrules}
+ #1
+ \end{allrules} \medskip
+ }
+
+\newcommand{\note}[1]{
+	\noindent \colorbox{notebod}{\begin{minipage}{.95\textwidth}
+			\hspace{-12pt}\colorbox{notehead}{\sf\color{white}NOTE}
+			#1
+	\end{minipage} } \medskip
+}
+
+
+% making the example thing with a line down the left.
+\newmdenv[
+rightline=false,
+bottomline=false,
+skipabove=0pt,%\topsep,
+skipbelow=0pt,%\topsep
+]{siderules}
+
+\newcommand{\ex}[1]{
+  \noindent \begin{siderules}
+    \textcolor{exhead}{\sf Example}
+    #1
+  \end{siderules} 
+  \medskip
+}
+
+
+
+
+%%%%%%%%%% set it up so that these are not displayed when 
+%%%%%%%%%% printing notes for students?  or for overhead?
+\newcommand{\exsol}[1]{
+  {\color{soltext} #1}
+}
+
+\newcommand{\mynonumsect}[2][]{
+ \cleardoublepage
+ \section*{#1\hskip16pt #2}
+ \addcontentsline{toc}{section}{#1 #2}
+}
+
+\newcommand{\myhead}[1]{
+\par%\vskip\baselineskip
+\noindent
+{\large\bf #1}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+% symbol shortcuts
+
+\newcommand{\nice}{\displaystyle}
+\newcommand{\eqq}{\ensuremath \stackrel{?}{=}}
+\newcommand{\R}{\ensuremath{\mathbb{R}}}
+
+
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%
+% %
+% % Creating handouts vs notes
+% %% If you use the line below before loading this file then it will be set up for
+% %% lecture notes.  Default is for handouts
+% %%
+% %% \newcommand{\lectureNoteMode}{}
+% %%
+% %% do not uncomment here, just add the line to the file where you input this one.
+% \ifthenelse{\not\isundefined\lectureNoteMode}
+% { % lecture notes 
+%   \newcommand{\Hvskip}[1]{}
+%   \newcommand{\Hvfill}{}
+%   \newcommand{\Hpbreak}{}  % pagebreaks for handouts
+%   \newcommand{\Npbreak}{\vfill\pagebreak} % pagebreaks for printable notes
+%   \newcommand{\Nonly}[1]{#1} % shows in notes, not in handouts
+%   \newcommand{\mycleardoublepage}{\cleardoublepage}
+
+%   \newcommand{\ex}[1]{
+%    \noindent \begin{allrules}
+%     \textcolor{exhead}{\sf Example}\par
+%     #1
+%     \end{allrules} \medskip
+%   }
+
+% } 
+% { 
+% %% Handout mode 
+% %% this section sets it up with smaller margins, and blank spots for writing solns to examples
+%   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   %change frame around examples
+%   % from mdframed package
+%   \newmdenv[
+%   rightline=false,
+%   bottomline=false,
+%   skipabove=0pt,%\topsep,
+%   skipbelow=0pt,%\topsep
+%   ]{siderules}
+  
+%   \newcommand{\ex}[1]{
+%     \noindent \begin{siderules}
+%       \textcolor{exhead}{\sf Example}
+%       #1
+%     \end{siderules} 
+%     \medskip
+%   }
+  
+%   %
+%   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  
+%   % don't show solutions for examples
+%   \renewcommand{\exsol}[1]{}
+  
+%   %used for making blank space in handouts. eg: \vs2
+%   \newcommand{\Hvskip}[1]{\vskip#1in\null}
+%   \newcommand{\Hvfill}{\vfill} %vfill only in handouts mode
+%   \newcommand{\Hpbreak}{\pagebreak} % pagebreaks for handouts
+%   \newcommand{\Npbreak}{} % pagebreaks for printable notes
+%   \newcommand{\Nonly}[1]{} % shows in printable, not in handouts
+%   \newcommand{\mycleardoublepage}{\newpage} % don't need blank pages if not printing
+  
+%   % don't really need margins since not printing.
+%   \geometry{margin=0.75in}
+
+%   \renewcommand{\mynonumsect}[2][]{
+%     \mycleardoublepage
+%     \section*{#1\hskip16pt Handout: #2}
+%     \addcontentsline{toc}{section}{#1 #2}
+%   }
+
+% } 
+
+
+

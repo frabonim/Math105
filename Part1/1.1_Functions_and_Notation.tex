@@ -1,0 +1,278 @@
+\documentclass[12pt, twoside]{report}
+
+\usepackage{multicol}
+%% comment this line for handouts. Uncomment for lecture notes
+%\newcommand{\lectureNoteMode}{}
+
+\input{../105Notes.tex}
+
+\setlength{\parindent}{0pt}
+
+\setcounter{chapter}{1}
+\begin{document}
+
+
+\mynonumsect[1.1]{Functions and Notation}
+
+\textbf{Goal:} To evaluate function values
+
+\myhead{What is a Function?}
+
+The natural world is full of relationships between quantities that change.  When we see these relationships, it is natural for us to ask "If I know one quantity, can I then determine the other?" This establishes the idea of an input quantity, or \dt{independent variable}, and a corresponding output quantity, or \dt{dependent variable}. From this we get the notion of a functional relationship in which the output can be determined from the input. 
+(David Lippman, Business PreCalculus, p1)
+
+\defn{\dt{Function:} \\
+	A Function is a rule for a relationship between an input or \underline{\hskip2in} quantity \\ \\
+	and an output or \underline{\hskip1.75in} in which each input value \underline{\hskip1.75in} \\ \\
+	determines one output value.	We say ``the output is a function of the input''.
+}
+
+\ex{Determine the following:
+	\begin{enumerate}
+		\item Age/Height:
+		\begin{enumerate}
+			\item Is your height a function of your age? \hrulefill \\
+			(\emph{Given your age, can you uniquely determinely your height at that given age?})
+			
+			\item Is your age a function of your height? \hrulefill \\
+			(\emph{Given a specific height, can you uniquely determine your age?}) 
+		\end{enumerate}
+		
+		\item At a coffee shop, the menu consists of items and their prices.
+		\begin{enumerate}
+			\item Is price a function of the item? \hrulefill \\
+			(\emph{Given an item, is their a unique price associated with the given item?})
+			
+			\item Is the item a function of the price? \hrulefill \\
+			(\emph{Given a price, is their a unique item associated with the given price?})
+		\end{enumerate}
+		
+		\item Bank Account:
+		\begin{enumerate}
+			\item Is your balance a function of your bank account number? \hrulefill \\
+			(\emph{If you input a bank account number, does it make sense that the output is your balance?})
+			
+			\item Is your bank account number a function of your balance? \hrulefill \\
+			(\emph{If you input a balance, does it make sense that the output is your bank account number?})
+		\end{enumerate}
+		
+		
+	\end{enumerate}
+	
+}
+
+
+\pagebreak
+
+\myhead{Function Notation}
+
+To simplify writing out expressions and equations involving functions, a simplified notation is often used.  We also use descriptive variables to help us remember the meaning of the quantities in the problem.
+
+\ex{Rather than write ``height is a function of age'', we could use the descriptive variable $h$ to represent height and we could use the descriptive variable $a$ to represent age.
+	
+\begin{tabular}{ll}
+	``height is a function of age'' & if we name the function $f$ we write \\
+	``$h$ is $f$ of $a$'' & or more simply \\
+	$h=f(a)$ & we could instead name the function $h$ and write \\
+	$h(a)$ & which is read ``$h$ of $a$''
+\end{tabular}
+
+\vskip12pt
+
+Words of Advice for Function Notation:
+\begin{itemize}
+	\item Remember we can use \emph{any} variable to name the function; the notation $h(a)$ shows us that \textbf{$h$ depends on $a$}. The value ``$a$'' \underline{must be} put into the function ``$h$'' to get a result.  
+	\item Be careful -- the parentheses indicate that age is input into the function. \\
+	(Note: Do not confuse these parentheses with multiplication!)
+	
+\end{itemize}
+
+}
+
+\defn{\dt{Function Notation:} 
+	
+	The notation defines a function named $f$.
+	\begin{center}
+		output = $f$(input)
+	\end{center}
+	
+	This would be read ``output is $f$ of input''.
+}
+
+
+\ex{A function $N = f(y)$ gives the number of police officers, $N$, in a town in year $y$.  \\
+	What does $f(2005) = 300$ tell us? \vfill 
+}
+
+\pagebreak
+
+
+\myhead{Evaluating Functions}
+
+Evaluate the following function at the specified values of the independent variable and simplify the results.
+
+\begin{enumerate}
+	\item \(f(x) = 4x - 5\) 
+	\begin{multicols}{2}
+		\begin{enumerate}
+			\item
+			\(f(1) =\) 
+			\vskip0.5in
+			
+			\item 
+			\(f\left( \frac{1}{4} \right) =\)  
+			\vskip1in \null
+			
+			\item
+			\(f( - 3) =\) 
+			\vskip0.5in
+			
+			\item
+			\(f(x - 1) =\) 
+			\vskip1in \null 
+		\end{enumerate}
+	\end{multicols}
+	
+	
+	\item Let \(f(x) = 4x - 5\) and \(g(x) = 2x + 3\) 
+	
+	\begin{enumerate}[resume]
+		\item
+		\((f + g)(2) =\) \vfill 
+		\item $(f - g)(3) = $ \vfill 
+		\item
+		\((f - g)(5a) =\) \vfill 
+		\item $(fg)( - 1) = $ \vfill 
+	\end{enumerate}
+	
+\end{enumerate}
+
+
+%%%% I am cutting this out because we are not longer doing the Limit Def of Derivative.
+%
+%   \fact{A foundational concept in calculus is the {difference quotient}.  Given a function $f(x)$, where $f$ is defined at $x$ and $x+h$ and $h \neq 0$, the \dt{difference quotient} is  \[\dfrac{f(x + h) - f(x)}{h}\] }
+%    
+%    Given the function \(f(x) = 7x+2\), find the difference quotient: 
+%    
+%    $\dfrac{f(3 + h) - f(3)}{h} = $ \vfill 
+%\vfill    
+%\pagebreak
+
+
+
+
+
+\pagebreak
+
+
+\myhead{Additional Practice}  
+  
+  Evaluate the given function for \(f(x) = x^{2} + 1\) and \(g(x) = x - 4\).
+  
+  \begin{enumerate}
+    \item
+      \((f + g)(5) =\)\vfill 
+    \item
+      \((f - g)(2c) =\) \vfill 
+    \item
+      \(4 \cdot g( - 3) =\) 
+      \vfill 
+      
+
+    \item 
+      \(3 \cdot f(4) - 2 \cdot g( - 1) =\) 
+      \vfill 
+      
+      \item
+      \((fg)( - 2) =\) 
+      \vfill 
+      
+    \item 
+     \(\left( \frac{f}{g} \right)(0) =\) 
+     \vfill 
+     
+
+%      \item 
+%      \(\dfrac{f(4) - g(3)}{f(2)} =\) 
+%      \vfill 
+%      
+%    \item 
+%      \(\dfrac{g( - 1 + h) - g( - 1)}{h} =\) 
+%      \vfill 
+%      
+%    \item
+%     \(\dfrac{f(3 + h) - f(3)}{h}=\) \vfill 
+  \end{enumerate}
+
+
+\end{document}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\pagebreak
+
+Many situations can be modeled using linear equations and inequalities.  Model each scenario below with a linear equation or inequality.  Then solve the equation or inequality and answer the question.
+
+\begin{enumerate}
+	\item Alex purchases a big screen TV, pays 7\% sales tax and is charged \$65 for delivery. If Alex's total cost is \$1668.93, what is the purchase price of the TV?\vfill
+	
+	\item \emph{Depreciation}. A new car worth \$45,000 is depreciating (decreasing) in value by \$5,200 per year. Find the linear model for the current value, $v$, of the car $y$ years after it was purchased. When will the car be worth \$20,000? \vfill
+	
+	\item Rita invested a total of $\$60,000$
+	in two accounts. One account pays $3.7\%$
+	interest annually; the other pays $4.2\%$
+	interest annually. At the end of the year, Rita earned a total interest of $\$2,280$. How much money did Rita invest in each account? \vfill
+	
+\end{enumerate}
+
+\pagebreak
+
+\myhead{Break-even Analysis}
+
+In a business there are two types of costs: fixed costs and variable costs.  
+
+{\bf Fixed costs} are costs that do not change with the number of items produced.  
+
+Examples of fixed costs: \\ \\
+
+{\bf Variable costs} are costs that change with the number of items produced.  
+
+Examples of variable costs: \\ \\
+
+The {\bf total cost} is the sum of the fixed costs and the variable costs.
+
+\hrulefill
+
+\begin{enumerate}[resume]
+	\item A publisher for a promising new novel figures fixed costs (overhead, advances, promotion, copyediting, typesetting, and so on) at \$87,000 and variable costs (printing, paper, binding, shipping) at \$4.50 for each book produced. What is the total cost for $x$ books? \vfill
+\end{enumerate}
+
+
+
+{\bf Revenue} is the amount of money a business receives from selling its products.  This is the number of items sold times the price per item.
+
+
+The {\bf profit} is the difference between the revenue and the total cost.
+
+If revenue is greater than total cost, then the business makes a profit.  If revenue is less than total cost, then the business loses money.  If revenue is equal to total cost, then the business breaks even.
+
+\begin{enumerate}[resume]
+	\item Consider the novel we discussed above. If the book is sold to distributors for \$28 each, how many must be produced and sold for the publisher to break even?
+	\vfill
+	
+	\item A band is planning a concert. The band will receive \$2000 from the venue and \$2 for each ticket sold. The band's expenses are \$2500. How many tickets must be sold for the band to break even? \vfill
+\end{enumerate}
+
+\pagebreak
+
+\myhead{Additional Practice}
+\begin{enumerate}
+	\item Mary paid 8.5\% sales tax and a \$190 title and license fee when she bought a new car for a total of \$28,400. What is the purchase price of the car? \vfill
+	\item How many bike computers would a company have to make and sell to break even if the fixed costs are \$36,000, variable costs are \$10.40 per computer, and the computers are sold to retailers for \$15.20 each? \vfill
+	\item A company that manufactures and sells x-ray machines has fixed costs of \$1,200,000 and variable costs of \$1,800 per machine. If the machines are sold to hospitals for \$2,400 each, how many machines must be sold for the company to break even? \vfill
+\end{enumerate}
+
+
