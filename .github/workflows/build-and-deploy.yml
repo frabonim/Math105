@@ -2,6 +2,7 @@ name: Build and Deploy
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+  BUILD_IMAGE: ghcr.io/${{ github.repository_owner }}/math105-build-env:latest
 
 on:
   push:
@@ -21,15 +22,12 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    container:
+      image: ${{ env.BUILD_IMAGE }}
 
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
-
-      - name: Install Pandoc and TeX
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y pandoc texlive-latex-recommended texlive-latex-extra texlive-pictures texlive-fonts-extra
 
       - name: Build site
         run: |

@@ -24,3 +24,5 @@ The root `index.html` is generated automatically with links to all built lessons
 - Standalone lesson `.tex` files are built from subdirectories like `Part1/`.
 - Shared support files like `105Notes.tex` at the repo root are not built directly.
 - GitHub Pages should be configured to deploy from GitHub Actions.
+- GitHub Actions uses a prebuilt container image with Pandoc and TeX already installed, so normal page builds do not reinstall TeX Live every run.
+- If you update the toolchain, edit `.github/docker/build-env.Dockerfile` and let the `Build Build Image` workflow publish a refreshed image to GHCR.

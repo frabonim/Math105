@@ -1,0 +1,43 @@
+name: Build Build Image
+
+env:
+  BUILD_IMAGE: ghcr.io/${{ github.repository_owner }}/math105-build-env:latest
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/docker/build-env.Dockerfile
+      - .github/workflows/build-build-image.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build and push image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: .github/docker/build-env.Dockerfile
+          push: true
+          tags: ${{ env.BUILD_IMAGE }}
