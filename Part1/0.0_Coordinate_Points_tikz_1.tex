@@ -1,0 +1,14 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\begin{document}
+\begin{tikzpicture}[scale=1]
+	% Draw gray grid
+	\draw[step=1cm,gray,very thin] (0,0) grid (10,10);
+	
+	% Draw x and y axes with arrows
+	\draw[thick,->] (0,0) -- (10.5,0); % x-axis with arrow
+	\draw[thick,->] (0,0) -- (0,10.5); % y-axis with arrow
+\end{tikzpicture}
+\end{document}

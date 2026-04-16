@@ -5,6 +5,7 @@ ROOT_DIR=$(pwd)
 OUT_DIR="$ROOT_DIR/site"
 PANDOC_FILTER="$ROOT_DIR/pandoc/math105.lua"
 PANDOC_HEADER="$ROOT_DIR/pandoc/math105-header.html"
+HTML_PREP="$ROOT_DIR/scripts/prepare_html_source.py"
 
 rm -rf "$OUT_DIR"
 mkdir -p "$OUT_DIR"
@@ -16,6 +17,7 @@ while IFS= read -r -d '' tex_file; do
   rel_dir=$(dirname "$rel_path")
   src_name=$(basename "$rel_path")
   base_name="${src_name%.tex}"
+  prepared_name="__${base_name}.html-prep.tex"
   out_dir="$OUT_DIR/$rel_dir"
   media_dir="$out_dir/media/$base_name"
   temp_dir=$(mktemp -d)
@@ -35,7 +37,9 @@ while IFS= read -r -d '' tex_file; do
 
   (
     cd "$ROOT_DIR/$rel_dir"
-    pandoc -s -t html5 -M lang=en --lua-filter="$PANDOC_FILTER" --include-in-header="$PANDOC_HEADER" --extract-media="$media_dir" --resource-path=".:../figs:.." "$src_name" -o "$out_dir/$base_name.html"
+    python3 "$HTML_PREP" "$src_name" "$prepared_name"
+    pandoc -s -t html5 --mathjax -M lang=en --lua-filter="$PANDOC_FILTER" --include-in-header="$PANDOC_HEADER" --extract-media="$media_dir" --resource-path=".:../figs:.." "$prepared_name" -o "$out_dir/$base_name.html"
+    python3 "$HTML_PREP" "$src_name" "$prepared_name" --clean
   )
 
   python3 - <<'PY' "$out_dir/$base_name.html" "$out_dir/" "$rel_dir/"
