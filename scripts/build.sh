@@ -56,7 +56,7 @@ html_path.write_text(content)
 PY
 
   pages+=("$rel_dir/$base_name")
-done < <(find . -mindepth 2 -name '*.tex' -not -path './site/*' -print0 | sort -z)
+done < <(find . -mindepth 2 -name '*.tex' -not -path './site/*' -not -name '__*.html-prep.tex' -not -name '*_tikz_*.tex' -print0 | sort -z)
 
 index_file="$OUT_DIR/index.html"
 

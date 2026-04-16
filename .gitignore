@@ -11,3 +11,7 @@ site/
 **/*.toc
 Part*/media/
 Part*/*.html
+Part*/*_tikz_*.tex
+Part*/*_tikz_*.pdf
+Part*/*_tikz_*.png
+Part*/__*.html-prep.tex
