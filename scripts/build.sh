@@ -3,6 +3,8 @@ set -euo pipefail
 
 ROOT_DIR=$(pwd)
 OUT_DIR="$ROOT_DIR/site"
+PANDOC_FILTER="$ROOT_DIR/pandoc/math105.lua"
+PANDOC_HEADER="$ROOT_DIR/pandoc/math105-header.html"
 
 rm -rf "$OUT_DIR"
 mkdir -p "$OUT_DIR"
@@ -31,7 +33,23 @@ while IFS= read -r -d '' tex_file; do
   mv "$temp_dir/$base_name.pdf" "$out_dir/$base_name.pdf"
   rm -rf "$temp_dir"
 
-  pandoc -s -t html5 -M lang=en --extract-media="$media_dir" --resource-path="$rel_dir:figs" "$rel_path" -o "$out_dir/$base_name.html"
+  (
+    cd "$ROOT_DIR/$rel_dir"
+    pandoc -s -t html5 -M lang=en --lua-filter="$PANDOC_FILTER" --include-in-header="$PANDOC_HEADER" --extract-media="$media_dir" --resource-path=".:../figs:.." "$src_name" -o "$out_dir/$base_name.html"
+  )
+
+  python3 - <<'PY' "$out_dir/$base_name.html" "$out_dir/" "$rel_dir/"
+from pathlib import Path
+import sys
+
+html_path = Path(sys.argv[1])
+abs_prefix = sys.argv[2]
+rel_prefix = sys.argv[3]
+content = html_path.read_text()
+content = content.replace(abs_prefix, "")
+content = content.replace('src="' + rel_prefix + 'media/', 'src="media/')
+html_path.write_text(content)
+PY
 
   pages+=("$rel_dir/$base_name")
 done < <(find . -mindepth 2 -name '*.tex' -not -path './site/*' -print0 | sort -z)
