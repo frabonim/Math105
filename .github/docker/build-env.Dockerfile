@@ -6,6 +6,7 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends \
       pandoc \
       python3 \
+      texlive-fonts-recommended \
       texlive-latex-recommended \
       texlive-latex-extra \
       texlive-pictures \
