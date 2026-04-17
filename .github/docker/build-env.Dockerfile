@@ -6,6 +6,7 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends \
       imagemagick \
       pandoc \
+      poppler-utils \
       python3 \
       texlive-fonts-recommended \
       texlive-latex-recommended \

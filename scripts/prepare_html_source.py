@@ -9,6 +9,7 @@ from pathlib import Path
 
 
 BLANK_TEXT = "[blank]"
+PDFTOPPM_BIN = shutil.which("pdftoppm")
 IMAGE_MAGICK_BIN = shutil.which("magick") or shutil.which("convert")
 
 
@@ -77,20 +78,36 @@ def render_tikz(match: re.Match[str], work_prefix: Path, index: int) -> str:
         stderr=subprocess.DEVNULL,
     )
 
-    subprocess.run(
-        [
-            IMAGE_MAGICK_BIN,
-            "-density",
-            "200",
-            str(pdf_path),
-            "-quality",
-            "100",
-            str(png_path),
-        ],
-        check=True,
-        stdout=subprocess.DEVNULL,
-        stderr=subprocess.DEVNULL,
-    )
+    if PDFTOPPM_BIN is not None:
+        subprocess.run(
+            [
+                PDFTOPPM_BIN,
+                "-png",
+                "-singlefile",
+                "-r",
+                "200",
+                str(pdf_path),
+                str(png_path.with_suffix("")),
+            ],
+            check=True,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+        )
+    else:
+        subprocess.run(
+            [
+                IMAGE_MAGICK_BIN,
+                "-density",
+                "200",
+                str(pdf_path),
+                "-quality",
+                "100",
+                str(png_path),
+            ],
+            check=True,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+        )
 
     alt = tikz_alt_text(tikz_body)
     return f"\\includegraphics[alt={{{alt}}}, width=4in]{{{png_path.name}}}"
@@ -132,9 +149,10 @@ def main() -> int:
     source_path = Path(sys.argv[1]).resolve()
     output_path = Path(sys.argv[2]).resolve()
 
-    if IMAGE_MAGICK_BIN is None:
+    if PDFTOPPM_BIN is None and IMAGE_MAGICK_BIN is None:
         print(
-            "error: neither 'magick' nor 'convert' was found in PATH", file=sys.stderr
+            "error: neither 'pdftoppm', 'magick', nor 'convert' was found in PATH",
+            file=sys.stderr,
         )
         return 1
 
