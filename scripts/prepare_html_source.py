@@ -9,6 +9,7 @@ from pathlib import Path
 
 
 BLANK_TEXT = "[blank]"
+IMAGE_MAGICK_BIN = shutil.which("magick") or shutil.which("convert")
 
 
 def replace_layout_artifacts(text: str) -> str:
@@ -78,7 +79,7 @@ def render_tikz(match: re.Match[str], work_prefix: Path, index: int) -> str:
 
     subprocess.run(
         [
-            "magick",
+            IMAGE_MAGICK_BIN,
             "-density",
             "200",
             str(pdf_path),
@@ -130,6 +131,12 @@ def main() -> int:
 
     source_path = Path(sys.argv[1]).resolve()
     output_path = Path(sys.argv[2]).resolve()
+
+    if IMAGE_MAGICK_BIN is None:
+        print(
+            "error: neither 'magick' nor 'convert' was found in PATH", file=sys.stderr
+        )
+        return 1
 
     if len(sys.argv) > 3 and sys.argv[3] == "--clean":
         cleanup(output_path.with_suffix(""))
