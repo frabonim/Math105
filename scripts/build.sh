@@ -6,6 +6,7 @@ OUT_DIR="$ROOT_DIR/site"
 PANDOC_FILTER="$ROOT_DIR/pandoc/math105.lua"
 PANDOC_HEADER="$ROOT_DIR/pandoc/math105-header.html"
 HTML_PREP="$ROOT_DIR/scripts/prepare_html_source.py"
+MATHJAX_URL="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
 
 rm -rf "$OUT_DIR"
 mkdir -p "$OUT_DIR"
@@ -38,7 +39,7 @@ while IFS= read -r -d '' tex_file; do
   (
     cd "$ROOT_DIR/$rel_dir"
     python3 "$HTML_PREP" "$src_name" "$prepared_name"
-    pandoc -s -t html5 --mathjax -M lang=en --lua-filter="$PANDOC_FILTER" --include-in-header="$PANDOC_HEADER" --extract-media="$media_dir" --resource-path=".:../figs:.." "$prepared_name" -o "$out_dir/$base_name.html"
+    pandoc -s -t html5 --mathjax="$MATHJAX_URL" -M lang=en --lua-filter="$PANDOC_FILTER" --include-in-header="$PANDOC_HEADER" --extract-media="$media_dir" --resource-path=".:../figs:.." "$prepared_name" -o "$out_dir/$base_name.html"
     python3 "$HTML_PREP" "$src_name" "$prepared_name" --clean
   )
 
