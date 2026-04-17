@@ -30,9 +30,9 @@ jobs:
 
       - name: Ensure required TeX fonts are available
         run: |
-          if ! kpsewhich putb8a.pfb >/dev/null 2>&1; then
+          if ! kpsewhich putb8a.pfb >/dev/null 2>&1 || ! command -v magick >/dev/null 2>&1; then
             apt-get update
-            apt-get install -y --no-install-recommends texlive-fonts-recommended texlive-fonts-extra texlive-fonts-extra-links
+            apt-get install -y --no-install-recommends imagemagick texlive-fonts-recommended texlive-fonts-extra texlive-fonts-extra-links
             mktexlsr
           fi
 
